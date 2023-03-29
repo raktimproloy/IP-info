@@ -17,17 +17,27 @@
     </p>
 
     <script>
-        const info = document.getElementById("info")
-        const info2 = document.getElementById("info2")
-        fetch("http://ip-api.com/json/?fields=61439")
-        .then((res) => res.json())
+        // const info = document.getElementById("info")
+        // const info2 = document.getElementById("info2")
+        // fetch("https://ip-api.com/json/?fields=61439")
+        // .then((res) => res.json())
+        // .then(res => {
+        //     const ip = res.query
+        //     fetch(`https://ipapi.co/${ip}/json/`)
+        //     .then(res => res.json())
+        //     .then(res => {info.innerText = JSON.stringify(res);})
+        //     .catch(err => console.log(err))
+        // })
+        // .catch(err => console.log(err))
+
+        fetch("https://api.ipify.org")
+        .then(res => res.text())
         .then(res => {
-            const ip = res.query
-            console.log(res);
-            // fetch(`https://ipapi.co/${ip}/json/`)
-            // .then(res => res.json())
-            // .then(res => {info.innerText = JSON.stringify(res);})
-            // .catch(err => console.log(err))
+            const ip = res
+            fetch(`https://ipapi.co/${ip}/json/`)
+            .then(res => res.json())
+            .then(res => {info.innerText = JSON.stringify(res);})
+            .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
     </script>
